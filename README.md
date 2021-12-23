@@ -1,2 +1,1 @@
 # Bookstore
-.NET Learning Repository
