@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: '${POSTGRES_PASSWORD}'
+    ports:
+      - '5432:5432'
+    volumes:
+      - /opt/postgresql/learningnest:/var/lib/postgresql/data 
+    networks:
+      - pgnetwork
+      
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: '${PGADMIN_EMAIL}'
+      PGADMIN_DEFAULT_PASSWORD: '${PGADMIN_PASSWORD}'
+    ports:
+      - '9001:80'
+    depends_on:
+      - postgres
+    networks:
+      - pgnetwork
+
+networks: 
+  pgnetwork:
+    driver: bridge
