@@ -9,11 +9,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E5D6E52A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookstore.UnitTests", "tests\Bookstore.UnitTests\Bookstore.UnitTests.csproj", "{D28C6696-D8C5-4C46-87C6-21D066426001}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookstore.Api", "Bookstore.Api\Bookstore.Api.csproj", "{9E079A46-7A07-4B35-A4E5-27D027812A54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookstore.Api", "Bookstore.Api\Bookstore.Api.csproj", "{9E079A46-7A07-4B35-A4E5-27D027812A54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookstore.Application", "Bookstore.Application\Bookstore.Application.csproj", "{A12F853E-AFD9-47CA-8541-F87FEF56E71E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookstore.Application", "Bookstore.Application\Bookstore.Application.csproj", "{A12F853E-AFD9-47CA-8541-F87FEF56E71E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookstore.Infra.Data", "Bookstore.Infra.Data\Bookstore.Infra.Data.csproj", "{F923D565-2BAB-4382-8FE7-0C92D0EFACD1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookstore.Infra.Data", "Bookstore.Infra.Data\Bookstore.Infra.Data.csproj", "{F923D565-2BAB-4382-8FE7-0C92D0EFACD1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookstore.Infra.CrossCutting", "Bookstore.Infra.CrossCutting\Bookstore.Infra.CrossCutting.csproj", "{69E148DA-D94A-40D9-814F-16599A7E2D58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookstore.Infra.Postgresql", "Bookstore.Infra.Postgresql\Bookstore.Infra.Postgresql.csproj", "{23C1221B-FE1B-415F-8EC3-43722FB0AE8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookstore.TestsCommons", "tests\Bookstore.TestsCommons\Bookstore.TestsCommons.csproj", "{4C1B093A-B7CE-4552-8391-3C05131FBC30}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,12 +47,25 @@ Global
 		{F923D565-2BAB-4382-8FE7-0C92D0EFACD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F923D565-2BAB-4382-8FE7-0C92D0EFACD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F923D565-2BAB-4382-8FE7-0C92D0EFACD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69E148DA-D94A-40D9-814F-16599A7E2D58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69E148DA-D94A-40D9-814F-16599A7E2D58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69E148DA-D94A-40D9-814F-16599A7E2D58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69E148DA-D94A-40D9-814F-16599A7E2D58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23C1221B-FE1B-415F-8EC3-43722FB0AE8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23C1221B-FE1B-415F-8EC3-43722FB0AE8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23C1221B-FE1B-415F-8EC3-43722FB0AE8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23C1221B-FE1B-415F-8EC3-43722FB0AE8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C1B093A-B7CE-4552-8391-3C05131FBC30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C1B093A-B7CE-4552-8391-3C05131FBC30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C1B093A-B7CE-4552-8391-3C05131FBC30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C1B093A-B7CE-4552-8391-3C05131FBC30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D28C6696-D8C5-4C46-87C6-21D066426001} = {E5D6E52A-5412-4269-BC07-D87DD135D488}
+		{4C1B093A-B7CE-4552-8391-3C05131FBC30} = {E5D6E52A-5412-4269-BC07-D87DD135D488}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CDDEE8F5-957C-4A84-BFC2-FE40B5FC169C}

@@ -2,7 +2,7 @@
 
 namespace Bookstore.Domain.ValueObjects.Contracts
 {
-    internal class CreateEmailContract: Contract<Email>
+    internal class CreateEmailContract : Contract<Email>
     {
         private const string ContractName = "Email";
         private const string InvalidEmailMessage = "Invalid e-mail address";

@@ -99,5 +99,52 @@ namespace Bookstore.UnitTests.Domain.ValueObjects
             email.IsValid.Should().BeFalse();
             email.Notifications.Should().ContainEquivalentOf(expectedNotification);
         }
+
+        [Fact]
+        public void ImplicitParseEmailToString_ShouldBeSuccess_WithoutNotifications()
+        {
+            var email = (Email)ValidEmail;
+            var emailString = (string)email;
+            emailString.Should().Be(ValidEmail);
+        }
+
+        [Fact]
+        public void Equals_ShouldBeTrue_WhenComparing_Email()
+        {
+            var email = new Email(ValidEmail);
+            var email2 = new Email(ValidEmail);
+
+            email.Equals(email2).Should().BeTrue();
+        }
+
+        [Fact]
+        public void Equals_ShouldBeTrue_WhenComparing_String()
+        {
+            var email = new Email(ValidEmail);
+            email.Equals(ValidEmail).Should().BeTrue();
+        }
+
+        [Fact]
+        public void Equals_ShouldBeFalse_WhenDifferentEmails()
+        {
+            var email = new Email(ValidEmail);
+            var email2 = new Email("thisis@anothervalidemail.com");
+
+            email.Equals(email2).Should().BeFalse();
+        }
+
+        [Fact]
+        public void Equals_ShouldBeFalse_WhenNull()
+        {
+            var email = new Email(ValidEmail);
+            email.Equals(null).Should().BeFalse();
+        }
+
+        [Fact]
+        public void Equals_ShouldBeFalse_WhenNotEmail_OrString()
+        {
+            var email = new Email(ValidEmail);
+            email.Equals(1).Should().BeFalse();
+        }
     }
 }
