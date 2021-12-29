@@ -99,5 +99,13 @@ namespace Bookstore.UnitTests.Domain.ValueObjects
             email.IsValid.Should().BeFalse();
             email.Notifications.Should().ContainEquivalentOf(expectedNotification);
         }
+
+        [Fact]
+        public void ImplicitParseEmailToString_ShouldBeSuccess_WithoutNotifications()
+        {
+            var email = (Email)ValidEmail;
+            var emailString = (string)email;
+            emailString.Should().Be(ValidEmail);
+        }
     }
 }

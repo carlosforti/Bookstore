@@ -17,6 +17,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookstore.Infra.Data", "Boo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookstore.Infra.CrossCutting", "Bookstore.Infra.CrossCutting\Bookstore.Infra.CrossCutting.csproj", "{69E148DA-D94A-40D9-814F-16599A7E2D58}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookstore.Infra.Postgresql", "Bookstore.Infra.Postgresql\Bookstore.Infra.Postgresql.csproj", "{40FB2BF1-99A5-4563-9F4C-D6B7AD9E7DFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookstore.TestsCommons", "Bookstore.TestsCommons\Bookstore.TestsCommons.csproj", "{5E733507-2CF8-4134-956E-5B4FAD8CE1FF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,9 +51,24 @@ Global
 		{69E148DA-D94A-40D9-814F-16599A7E2D58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69E148DA-D94A-40D9-814F-16599A7E2D58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69E148DA-D94A-40D9-814F-16599A7E2D58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40FB2BF1-99A5-4563-9F4C-D6B7AD9E7DFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40FB2BF1-99A5-4563-9F4C-D6B7AD9E7DFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40FB2BF1-99A5-4563-9F4C-D6B7AD9E7DFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40FB2BF1-99A5-4563-9F4C-D6B7AD9E7DFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E733507-2CF8-4134-956E-5B4FAD8CE1FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E733507-2CF8-4134-956E-5B4FAD8CE1FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E733507-2CF8-4134-956E-5B4FAD8CE1FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E733507-2CF8-4134-956E-5B4FAD8CE1FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D28C6696-D8C5-4C46-87C6-21D066426001} = {E5D6E52A-5412-4269-BC07-D87DD135D488}
+		{5E733507-2CF8-4134-956E-5B4FAD8CE1FF} = {E5D6E52A-5412-4269-BC07-D87DD135D488}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CDDEE8F5-957C-4A84-BFC2-FE40B5FC169C}
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D28C6696-D8C5-4C46-87C6-21D066426001} = {E5D6E52A-5412-4269-BC07-D87DD135D488}

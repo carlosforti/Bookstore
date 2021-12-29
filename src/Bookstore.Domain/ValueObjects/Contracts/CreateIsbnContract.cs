@@ -1,7 +1,6 @@
 ﻿using Flunt.Validations;
 
 using System.Linq;
-using System.Text.RegularExpressions;
 
 namespace Bookstore.Domain.ValueObjects.Contracts
 {

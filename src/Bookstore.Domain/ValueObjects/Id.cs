@@ -24,5 +24,23 @@ namespace Bookstore.Domain.ValueObjects
             result = new Id(value);
             return result.IsValid;
         }
+
+        public override bool Equals(object obj)
+        {
+            if(obj == null || !(obj is Id)) return false;
+            return ((Id)obj).Value == _id;
+        }
+
+        public override int GetHashCode()
+        {
+            return _id.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return _id.ToString();
+        }
+
+        public static implicit operator int(Id id) => id.Value;
     }
 }

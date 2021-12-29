@@ -3,6 +3,9 @@ using Bookstore.Domain.ValueObjects;
 
 using Flunt.Notifications;
 
+using System;
+using System.Collections.Generic;
+
 namespace Bookstore.Domain.Entities
 {
     public class Store : Notifiable<Notification>
@@ -19,5 +22,17 @@ namespace Bookstore.Domain.Entities
         public Id Id { get; }
         public Name Name { get; }
         public Email Email { get; }
+
+        public override bool Equals(object? obj)
+        {
+            if (obj == null || !(obj is Store)) return false;
+
+            return ((Store)obj).GetHashCode() == GetHashCode();
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Id, Name, Email);
+        }
     }
 }

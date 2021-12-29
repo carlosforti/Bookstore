@@ -117,5 +117,12 @@ namespace Bookstore.UnitTests.Domain.ValueObjects
             name.IsValid.Should().BeFalse();
             name.Notifications.Should().ContainEquivalentOf(expectedNotification);
         }
+
+        [Fact]
+        public void ImplicitParseNameToString_ShouldBeSuccess_WithoutNotifications()
+        {
+            var name = Name.Parse("Teste");
+            ((string)name).Should().Be("Teste");
+        }
     }
 }

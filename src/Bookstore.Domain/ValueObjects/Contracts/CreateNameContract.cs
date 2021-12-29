@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Bookstore.Domain.ValueObjects.Contracts
 {
-    internal class CreateNameContract: Contract<Name>
+    internal class CreateNameContract : Contract<Name>
     {
         private const string ContractName = "Name";
         private const string NotNullOrEmptyErrorMessage = "Name must have a value";

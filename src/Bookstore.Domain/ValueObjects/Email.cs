@@ -2,9 +2,11 @@
 
 using Flunt.Notifications;
 
+using System;
+
 namespace Bookstore.Domain.ValueObjects
 {
-    public class Email: Notifiable<Notification>
+    public class Email : Notifiable<Notification>
     {
         private readonly string _email;
 
@@ -24,6 +26,19 @@ namespace Bookstore.Domain.ValueObjects
             return result.IsValid;
         }
 
+        public override bool Equals(object obj)
+        {
+            if (obj == null || !(obj is Email) || !(obj is string)) return false;
+            return ((Email)obj).ToString() == _email;
+        }
+
+        public override int GetHashCode()
+        {
+            return _email.GetHashCode();
+        }
+
         public static implicit operator Email(string value) => Parse(value);
+
+        public static implicit operator string(Email value) => value.ToString();
     }
 }

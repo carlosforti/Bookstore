@@ -3,11 +3,13 @@ using Bookstore.Domain.ValueObjects;
 
 using Flunt.Notifications;
 
+using System;
+
 namespace Bookstore.Domain.Entities
 {
-    public class Book: Notifiable<Notification>
+    public class Book : Notifiable<Notification>
     {
-        public Book (int id , string name , Author author , Publisher publisher, string isbn)
+        public Book(int id, string name, Author author, Publisher publisher, string isbn)
         {
             Id = Id.Parse(id);
             Name = Name.Parse(name);
@@ -23,5 +25,16 @@ namespace Bookstore.Domain.Entities
         public Author Author { get; }
         public Publisher Publisher { get; }
         public Isbn Isbn { get; }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null || !(obj is Book)) return false;
+            return ((Book)obj).GetHashCode() == GetHashCode();
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Id, Name, Author, Publisher, Isbn);
+        }
     }
 }

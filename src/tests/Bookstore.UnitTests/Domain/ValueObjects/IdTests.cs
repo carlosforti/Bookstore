@@ -49,5 +49,16 @@ namespace Bookstore.UnitTests.Domain.ValueObjects
             id.IsValid.Should().BeFalse();
             id.Notifications.Should().ContainEquivalentOf(expectedNotification);
         }
+
+        [Fact]
+        public void ImplicitParseToInt_ShouldBeSuccess_WithoutNotifications()
+        {
+            var expectedId = 1;
+            var id = Id.Parse(expectedId);
+
+            var resultId = (int)id;
+
+            resultId.Should().Be(expectedId);
+        }
     }
 }

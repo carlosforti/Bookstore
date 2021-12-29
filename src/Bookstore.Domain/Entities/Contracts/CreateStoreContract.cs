@@ -2,7 +2,7 @@
 
 namespace Bookstore.Domain.Entities.Contracts
 {
-    internal class CreateStoreContract: Contract<Store>
+    internal class CreateStoreContract : Contract<Store>
     {
         private const string ContractName = "Store";
 

@@ -1,6 +1,10 @@
 using Bookstore.Domain.Entities.Contracts;
 using Bookstore.Domain.ValueObjects;
+
 using Flunt.Notifications;
+
+using System;
+using System.Collections.Generic;
 
 namespace Bookstore.Domain.Entities
 {
@@ -18,5 +22,17 @@ namespace Bookstore.Domain.Entities
         public Id Id { get; }
         public Email Email { get; }
         public Name Name { get; }
+
+        public override bool Equals(object? obj)
+        {
+            if (obj == null || !(obj is Publisher)) return false;
+
+            return ((Publisher)obj).GetHashCode() == GetHashCode();
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Id, Email, Name);
+        }
     }
 }
