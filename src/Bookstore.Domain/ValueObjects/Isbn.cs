@@ -25,6 +25,21 @@ namespace Bookstore.Domain.ValueObjects
             return result.IsValid;
         }
 
+        public override bool Equals(object? obj)
+        {
+            if (obj == null
+                || (!(obj is Isbn) && !(obj is string))) return false;
+
+            var stringObj = obj.ToString();
+            return ((Isbn)stringObj).ToString() == _isbn;
+        }
+
+        public override int GetHashCode()
+        {
+            return _isbn.GetHashCode();
+        }
+
         public static implicit operator string(Isbn value) => value.ToString();
+        public static implicit operator Isbn(string value) => Parse(value);
     }
 }

@@ -1,6 +1,8 @@
-using Xunit;
 using Bookstore.Domain.Entities;
+
 using FluentAssertions;
+
+using Xunit;
 
 namespace Bookstore.UnitTests.Domain.Entities
 {
@@ -24,6 +26,25 @@ namespace Bookstore.UnitTests.Domain.Entities
             var publisher = new Publisher(id, name, email);
             publisher.IsValid.Should().BeFalse();
             publisher.Notifications.Count.Should().Be(notificationQuantity);
+        }
+
+        [Fact]
+        public void Equals_ShouldBeTrue_WhenComparingPublisher()
+        {
+            var publisher = new Publisher(0, "Test", "test@test.com");
+            var otherPublisher = new Publisher(0, "Test", "test@test.com");
+
+            publisher.Equals(otherPublisher).Should().BeTrue();
+        }
+
+        [Theory]
+        [InlineData(null)]
+        [InlineData(1)]
+        [InlineData("")]
+        public void Equals_ShouldBeFalse_WhenComparingOthers(object obj)
+        {
+            var publisher = new Publisher(0, "Test", "test@test.com");
+            publisher.Equals(obj).Should().BeFalse();
         }
     }
 }

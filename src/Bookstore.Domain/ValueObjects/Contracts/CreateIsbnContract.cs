@@ -1,7 +1,5 @@
-﻿using Flunt.Validations;
-
-using System.Linq;
-using System.Text.RegularExpressions;
+﻿using System.Linq;
+using Flunt.Validations;
 
 namespace Bookstore.Domain.ValueObjects.Contracts
 {
@@ -24,7 +22,7 @@ namespace Bookstore.Domain.ValueObjects.Contracts
                 .IsTrue(ValidIsbn(isbn), ContractName, InvalidIsbn);
         }
 
-        private bool ValidIsbn(Isbn isbn)
+        private static bool ValidIsbn(Isbn isbn)
         {
             if (isbn.ToString().Length != MinimumSize
                 && isbn.ToString().Length != MaximumSize) return false;
@@ -34,11 +32,11 @@ namespace Bookstore.Domain.ValueObjects.Contracts
                 : ValidIsbn13(isbn);
         }
 
-        private bool ValidIsbn10(Isbn isbn)
+        private static bool ValidIsbn10(Isbn isbn)
         {
             string isbnValue = isbn;
 
-            if (!long.TryParse(isbnValue[..(MinimumSize - 2)], out var _)) return false;
+            if (!long.TryParse(isbnValue[..(MinimumSize - 2)], out _)) return false;
 
             var sum = 0;
             for (var i = 0; i < 9; i++)
@@ -47,16 +45,29 @@ namespace Bookstore.Domain.ValueObjects.Contracts
                 sum += digit * (10 - i);
             }
 
-            var last = isbnValue[9];
-
-            if (last != 'X' && (last < '0' || last > '9')) return false;
-
-            sum += (last == 'X') ? 10 : GetDigit(last);
+            if (!ValidLastChar(isbn, out var value)) return false;
+            
+            sum += value;
 
             return sum % 11 == 0;
         }
 
-        private bool ValidIsbn13(Isbn isbn)
+        private static bool ValidLastChar(Isbn isbn, out int value)
+        {
+            value = 0;
+            var last = isbn.ToString()[9];
+
+            if (last != 'X')
+            {
+                if (last < '0') return false;
+                if (last > '9') return false;
+            }
+
+            value = last == 'X' ? 10 : GetDigit(last);
+            return true;
+        }
+
+        private static bool ValidIsbn13(Isbn isbn)
         {
             string isbnValue = isbn;
 
@@ -73,6 +84,6 @@ namespace Bookstore.Domain.ValueObjects.Contracts
             return (sum % 10) == 0;
         }
 
-        private int GetDigit(char value) => value - '0';
+        private static int GetDigit(char value) => value - '0';
     }
 }
