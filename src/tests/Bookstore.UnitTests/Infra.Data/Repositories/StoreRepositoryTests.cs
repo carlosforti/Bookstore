@@ -12,9 +12,7 @@ using FluentAssertions;
 
 using Moq;
 
-using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 using Xunit;
 
@@ -24,7 +22,7 @@ namespace Bookstore.UnitTests.Infra.Data.Repositories
     {
         private readonly IMapper _mapper = AutoMapperHelper.Mapper;
         private readonly Mock<IStoreData> _storeData = new Mock<IStoreData>();
-        private readonly IStoreRepository _storeRepository;
+        private readonly StoreRepository _storeRepository;
 
         public StoreRepositoryTests()
         {
@@ -34,7 +32,7 @@ namespace Bookstore.UnitTests.Infra.Data.Repositories
         [Fact]
         public async void GetAll_ShouldReturn_ListOfStores()
         {
-            var stores = StoreDtoFaker.GetFakerStoresDtos();
+            var stores = StoreDtoFaker.GetFakeStoreDtoList();
             _storeData
                 .Setup(s => s.GetAll())
                 .ReturnsAsync(stores);
@@ -48,7 +46,7 @@ namespace Bookstore.UnitTests.Infra.Data.Repositories
         [Fact]
         public async void GetById_ShouldReturnSingleStore_WhenFound()
         {
-            var store = StoreDtoFaker.GetFakerStoreDto();
+            var store = StoreDtoFaker.GetFakeStoreDto();
             _storeData
                 .Setup(s => s.GetById(It.Is<int>(id => id == store.Id)))
                 .ReturnsAsync(store);
@@ -62,7 +60,7 @@ namespace Bookstore.UnitTests.Infra.Data.Repositories
         [Fact]
         public async void GetById_ShouldReturnNull_WhenNotFound()
         {
-            var store = StoreDtoFaker.GetFakerStoreDto();
+            var store = StoreDtoFaker.GetFakeStoreDto();
             _storeData
                 .Setup(s => s.GetById(It.Is<int>(id => id == store.Id)))
                 .ReturnsAsync(store);
@@ -83,16 +81,31 @@ namespace Bookstore.UnitTests.Infra.Data.Repositories
         [Fact]
         public async void Save_ShouldExecute_AndReturnData()
         {
-            var storeDto = StoreDtoFaker.GetFakerStoreDto();
+            var storeDto = StoreDtoFaker.GetFakeStoreDto();
             var store = _mapper.Map<Store>(storeDto);
 
             _storeData
-                .Setup(x => x.Save(It.Is<StoreDto>(dto => dto.Equals(storeDto))))
+                .Setup(x => x.Save(It.IsAny<StoreDto>()))
                 .ReturnsAsync(storeDto);
 
             var result = await _storeRepository.Save(store);
             result.Should().BeEquivalentTo(store);
-            _storeData.Verify(x => x.Save(It.Is<StoreDto>(dto => dto == storeDto)), Times.Once());
+            _storeData.Verify(x => x.Save(It.IsAny<StoreDto>()), Times.Once());
+        }
+
+        [Fact]
+        public async void Update_ShouldExecute_AndReturnData()
+        {
+            var storeDto = StoreDtoFaker.GetFakeStoreDto();
+            var store = _mapper.Map<Store>(storeDto);
+
+            _storeData
+                .Setup(x => x.Update(It.IsAny<StoreDto>()))
+                .ReturnsAsync(storeDto);
+
+            var result = await _storeRepository.Update(store);
+            result.Should().BeEquivalentTo(store);
+            _storeData.Verify(x => x.Update(It.IsAny<StoreDto>()), Times.Once());
         }
     }
 }

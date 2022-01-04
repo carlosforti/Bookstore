@@ -32,5 +32,31 @@ namespace Bookstore.UnitTests.Domain.Entities
             author.Notifications.Count.Should().Be(notificationQuantity);
             author.Notifications.Should().ContainEquivalentOf(expectedNotification);
         }
+
+        [Fact]
+        public void Equals_ShouldBeTrue()
+        {
+            var author = new Author(1, "Test", "test@test.com");
+            var author2 = new Author(1, "Test", "test@test.com");
+
+            author.Equals(author2).Should().BeTrue();
+        }
+
+        [Fact]
+        public void Equals_ShouldBeFalse_WhenDifferentAuthor()
+        {
+            var author = new Author(1, "Test", "test@test.com");
+            var author2 = new Author(2, "Test", "test@test.com");
+
+            author.Equals(author2).Should().BeFalse();
+        }
+
+        [Fact]
+        public void Equals_ShouldBeFalse_WhenNull()
+        {
+            var author = new Author(1, "Test", "test@test.com");
+
+            author.Equals(null).Should().BeFalse();
+        }
     }
 }

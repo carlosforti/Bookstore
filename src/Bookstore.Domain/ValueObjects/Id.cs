@@ -11,7 +11,6 @@ namespace Bookstore.Domain.ValueObjects
         public Id(int id)
         {
             _id = id;
-
             AddNotifications(new CreateIdContract(this));
         }
 
@@ -25,10 +24,14 @@ namespace Bookstore.Domain.ValueObjects
             return result.IsValid;
         }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
-            if(obj == null || !(obj is Id)) return false;
-            return ((Id)obj).Value == _id;
+            if (obj == null || (!(obj is Id) && !(obj is int))) return false;
+
+            var intObj = obj is int 
+                ? (int)obj 
+                : ((Id)obj).Value;
+            return intObj == _id;
         }
 
         public override int GetHashCode()
@@ -42,5 +45,6 @@ namespace Bookstore.Domain.ValueObjects
         }
 
         public static implicit operator int(Id id) => id.Value;
+        public static implicit operator Id(int id) => Parse(id);
     }
 }

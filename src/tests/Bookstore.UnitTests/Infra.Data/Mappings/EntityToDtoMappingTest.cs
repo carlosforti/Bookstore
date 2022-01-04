@@ -1,16 +1,9 @@
-﻿using AutoMapper;
-
+﻿
 using Bookstore.Domain.Entities;
 using Bookstore.Infra.Data.Dtos;
 using Bookstore.TestsCommons;
 
 using FluentAssertions;
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xunit;
 
@@ -26,7 +19,11 @@ namespace Bookstore.UnitTests.Infra.Data.Mappings
         private static StoreDto GetStoreDto() => new() { Id = 1, Name = "Store", Email = "test@store.com" };
         private static AuthorDto GetAuthorDto() => new() { Id = 1, Name = "Author", Email = "test@author.com" };
         private static PublisherDto GetPublisherDto() => new() { Id = 1, Name = "Publisher", Email = "test@publisher.com" };
-        private static BookDto GetBookDto() => new() { Id = 1, Name = "Book", Isbn = "9789873303111", AuthorId = 1, PublisherId = 1 };
+        private static BookDto GetBookDto() => new()
+        {
+            Id = 1, Name = "Book", Author = GetAuthorDto(), Publisher = GetPublisherDto(), Isbn = "9789873303111",
+            AuthorId = 1, PublisherId = 1
+        };
 
         [Fact]
         public void MapStoreToDto_ShouldBeSuccess()

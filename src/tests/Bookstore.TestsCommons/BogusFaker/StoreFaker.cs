@@ -2,12 +2,12 @@
 
 using Bookstore.Domain.Entities;
 
-using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Bookstore.TestsCommons.BogusFaker
 {
+    [ExcludeFromCodeCoverage]
     public static class StoreFaker
     {
         public static Store GetFakerStore() =>

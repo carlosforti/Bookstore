@@ -1,10 +1,5 @@
 ﻿using Flunt.Notifications;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace Bookstore.Infra.CrossCutting.Notifications
 {
     public class NotificationContext : INotificationContext

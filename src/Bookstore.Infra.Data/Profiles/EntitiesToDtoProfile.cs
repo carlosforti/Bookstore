@@ -3,7 +3,7 @@
 using Bookstore.Domain.Entities;
 using Bookstore.Infra.Data.Dtos;
 
-namespace Bookstore.Infra.Data.Mappings
+namespace Bookstore.Infra.Data.Profiles
 {
     public class EntitiesToDtoProfile : Profile
     {

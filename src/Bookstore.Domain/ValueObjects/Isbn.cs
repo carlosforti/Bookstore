@@ -25,13 +25,13 @@ namespace Bookstore.Domain.ValueObjects
             return result.IsValid;
         }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             if (obj == null
-                || !(obj is Isbn)
-                || !(obj is string)) return false;
+                || (!(obj is Isbn) && !(obj is string))) return false;
 
-            return ((Isbn)obj).ToString() == _isbn;
+            var stringObj = obj.ToString();
+            return ((Isbn)stringObj).ToString() == _isbn;
         }
 
         public override int GetHashCode()

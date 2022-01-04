@@ -1,13 +1,20 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-    <Nullable>enable</Nullable>
+	  <TargetFramework>net6.0</TargetFramework>
+	  <ImplicitUsings>enable</ImplicitUsings>
+	  <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Flunt" Version="2.0.5" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Bookstore.Application\Bookstore.Application.csproj" />
+    <ProjectReference Include="..\Bookstore.Infra.Data\Bookstore.Infra.Data.csproj" />
+    <ProjectReference Include="..\Bookstore.Infra.Postgresql\Bookstore.Infra.Postgresql.csproj" />
   </ItemGroup>
 
 </Project>

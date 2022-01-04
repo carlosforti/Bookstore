@@ -26,7 +26,7 @@
     <ProjectReference Include="..\..\Bookstore.Domain\Bookstore.Domain.csproj" />
     <ProjectReference Include="..\..\Bookstore.Infra.CrossCutting\Bookstore.Infra.CrossCutting.csproj" />
     <ProjectReference Include="..\..\Bookstore.Infra.Data\Bookstore.Infra.Data.csproj" />
-    <ProjectReference Include="..\..\Bookstore.TestsCommons\Bookstore.TestsCommons.csproj" />
+    <ProjectReference Include="..\Bookstore.TestsCommons\Bookstore.TestsCommons.csproj" />
   </ItemGroup>
 
 </Project>

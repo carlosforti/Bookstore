@@ -3,7 +3,7 @@
 using Bookstore.Application.Interfaces;
 using Bookstore.Domain.Entities;
 using Bookstore.Infra.Data.Dtos;
-using Bookstore.Infra.Postgresql.Interfaces;
+using Bookstore.Infra.Data.Interfaces;
 
 using System.Collections.Generic;
 using System.Threading.Tasks;

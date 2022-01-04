@@ -11,8 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Bookstore.Domain\Bookstore.Domain.csproj" />
-    <ProjectReference Include="..\Bookstore.Infra.Data\Bookstore.Infra.Data.csproj" />
+    <ProjectReference Include="..\..\Bookstore.Infra.Data\Bookstore.Infra.Data.csproj" />
   </ItemGroup>
 
 </Project>

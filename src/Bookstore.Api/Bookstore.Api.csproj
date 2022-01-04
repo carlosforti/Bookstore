@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Bookstore.Infra.Data\Bookstore.Infra.Data.csproj" />
+    <ProjectReference Include="..\Bookstore.Infra.CrossCutting\Bookstore.Infra.CrossCutting.csproj" />
   </ItemGroup>
 
 </Project>

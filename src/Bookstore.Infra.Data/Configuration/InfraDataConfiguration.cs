@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-using AutoMapper;
-
+﻿
+using System.Diagnostics.CodeAnalysis;
 using Bookstore.Application.Interfaces;
 using Bookstore.Infra.Data.Repositories;
 

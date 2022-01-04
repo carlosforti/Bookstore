@@ -24,10 +24,13 @@ namespace Bookstore.Domain.ValueObjects
 
         public static Name Parse(string value) => new Name(value);
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
-            if (obj == null || !(obj is Name) || !(obj is string)) return false;
-            return ((Name)obj).ToString() == _name;
+            if (obj == null
+                || (!(obj is Name) && !(obj is string))) return false;
+
+            var stringObj = obj.ToString();
+            return ((Name)stringObj).GetHashCode() == _name.GetHashCode();
         }
 
         public override int GetHashCode()

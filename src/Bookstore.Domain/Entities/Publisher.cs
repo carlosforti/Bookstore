@@ -4,7 +4,6 @@ using Bookstore.Domain.ValueObjects;
 using Flunt.Notifications;
 
 using System;
-using System.Collections.Generic;
 
 namespace Bookstore.Domain.Entities
 {
@@ -25,7 +24,7 @@ namespace Bookstore.Domain.Entities
 
         public override bool Equals(object? obj)
         {
-            if (obj == null || !(obj is Publisher)) return false;
+            if (!(obj is Publisher)) return false;
 
             return ((Publisher)obj).GetHashCode() == GetHashCode();
         }

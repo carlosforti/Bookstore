@@ -124,5 +124,46 @@ namespace Bookstore.UnitTests.Domain.ValueObjects
             var name = Name.Parse("Teste");
             ((string)name).Should().Be("Teste");
         }
+
+        [Fact]
+        public void Equals_ShouldBeTrue_WhenComparingNames()
+        {
+            var name = new Name("Test");
+            var name2 = new Name("Test");
+
+            name.Equals(name2).Should().BeTrue();
+        }
+
+        [Fact]
+        public void Equals_ShouldBeTrue_WhenComparingString()
+        {
+            var name = new Name("Test");
+            name.Equals("Test").Should().BeTrue();
+        }
+
+        [Fact]
+        public void Equals_ShouldBeFalse_WhenDifferentNames()
+        {
+            var name = new Name("Test");
+            var name2 = new Name("Test 2");
+
+            name.Equals(name2).Should().BeFalse();
+        }
+
+        [Fact]
+        public void Equals_ShouldBeFalse_WhenNull()
+        {
+            var name = new Name("Test");
+
+            name.Equals(null).Should().BeFalse();
+        }
+
+        [Fact]
+        public void Equals_ShouldBeFalse_WhenNotString()
+        {
+            var name = new Name("Test");
+
+            name.Equals(1).Should().BeFalse();
+        }
     }
 }

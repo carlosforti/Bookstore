@@ -60,5 +60,58 @@ namespace Bookstore.UnitTests.Domain.ValueObjects
 
             resultId.Should().Be(expectedId);
         }
+
+        [Fact]
+        public void ImplicitParseIntToId_ShouldBeSuccess_WithoutNotification()
+        {
+            var expected = new Id(1);
+            var result = (Id)1;
+
+            result.Should().BeEquivalentTo(expected);
+        }
+
+        [Fact]
+        public void Equals_ShoudBeTrue_WhenComparingWithId()
+        {
+            var id = new Id(1);
+            var otherId = new Id(1);
+            id.Equals(otherId).Should().BeTrue();
+        }
+
+        [Fact]
+        public void Equals_ShoudBeTrue_WhenComparingWithInt()
+        {
+            var id = new Id(1);
+            id.Equals(1).Should().BeTrue();
+        }
+
+        [Fact]
+        public void Equals_ShoudBeFalse_WhenComparingWithId()
+        {
+            var compare = new Id(2);
+            var otherId = new Id(1);
+
+            compare.Equals(otherId).Should().BeFalse();
+        }
+
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        public void Equals_ShouldBeFalse_WhenComparingNotIdOrInt(string input)
+        {
+            var compare = new Id(1);
+            compare.Equals(input).Should().BeFalse();
+        }
+
+        [Theory]
+        [InlineData(1, "1")]
+        [InlineData(25, "25")]
+        [InlineData(30, "30")]
+        public void ToString_ShouldReturn_ValueAsString(int input, string expected)
+        {
+            var id = new Id(input);
+
+            id.ToString().Should().Be(expected);
+        }
     }
 }

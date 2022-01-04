@@ -5,10 +5,7 @@ using Bookstore.Domain.Entities;
 using Bookstore.Infra.Data.Dtos;
 using Bookstore.Infra.Data.Interfaces;
 
-using Flunt.Notifications;
-
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Bookstore.Infra.Data.Repositories
@@ -38,12 +35,6 @@ namespace Bookstore.Infra.Data.Repositories
         public async Task<Store> GetById(int id)
         {
             var store = await _storeData.GetById(id);
-
-            if(store == null)
-            {
-                return null;
-            }
-
             return _mapper.Map<Store>(store);
         }
 

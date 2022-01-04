@@ -1,4 +1,4 @@
-using Bookstore.Api;
+using Bookstore.Api.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 

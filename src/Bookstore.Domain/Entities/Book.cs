@@ -26,9 +26,9 @@ namespace Bookstore.Domain.Entities
         public Publisher Publisher { get; }
         public Isbn Isbn { get; }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
-            if (obj == null || !(obj is Book)) return false;
+            if (!(obj is Book)) return false;
             return ((Book)obj).GetHashCode() == GetHashCode();
         }
 

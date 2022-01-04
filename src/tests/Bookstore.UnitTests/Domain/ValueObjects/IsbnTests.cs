@@ -19,6 +19,7 @@ namespace Bookstore.UnitTests.Domain.ValueObjects
         [InlineData("9789873303111")]
         [InlineData("1-56619-909-3")]
         [InlineData("1566199093")]
+        [InlineData("0-8044-2957-X")]
         public void CreateIsbn_ShouldBeSuccess_WithoutNotifications(string input)
         {
             var isbn = Isbn.Parse(input);
@@ -34,7 +35,7 @@ namespace Bookstore.UnitTests.Domain.ValueObjects
         [InlineData("X789873303112")]
         [InlineData("X566199092")]
         [InlineData("156619909A")]
-        [InlineData("156619909!")]
+        [InlineData("156619909.")]
         public void CreateIsbn_ShouldFail_WithNotification_WhenInvalidIsbn(string input)
         {
             var expectedNotification = new Notification(ContractName, InvalidIsbn);
@@ -91,6 +92,42 @@ namespace Bookstore.UnitTests.Domain.ValueObjects
         {
             var isbn = Isbn.Parse("9789873303112");
             ((string)isbn).Should().Be("9789873303112");
+        }
+
+        [Fact]
+        public void ImplicitConversionToIsbn_ShouldBeSuccess()
+        {
+            var isbnNumber = "9789873303112";
+            var isbn = Isbn.Parse(isbnNumber);
+            ((Isbn)isbnNumber).Should().BeEquivalentTo(isbn);
+        }
+
+        [Fact]
+        public void Equals_ShouldBeTrue_WhenString()
+        {
+            var isbnNumber = "9789873303112";
+            var isbn = Isbn.Parse(isbnNumber);
+
+            isbn.Equals(isbnNumber).Should().BeTrue();
+        }
+
+        [Fact]
+        public void Equals_ShouldBeTrue_WhenIsbn()
+        {
+            var isbnNumber = "9789873303112";
+            var isbn = Isbn.Parse(isbnNumber);
+            var otherIsbn = Isbn.Parse(isbnNumber);
+
+            isbn.Equals(otherIsbn).Should().BeTrue();
+        }
+
+        [Theory]
+        [InlineData(null)]
+        [InlineData(1)]
+        public void Equals_ShouldBeFalse_WhenNotIsbnOrString(object obj)
+        {
+            var isbn = Isbn.Parse("9789873303112");
+            isbn.Equals(obj).Should().BeFalse();
         }
     }
 }

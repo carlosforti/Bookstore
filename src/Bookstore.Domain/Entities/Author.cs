@@ -22,9 +22,9 @@ namespace Bookstore.Domain.Entities
         public Email Email { get; }
         public Name Name { get; }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
-            if (obj == null || !(obj is Author)) return false;
+            if (!(obj is Author)) return false;
             return ((Author)obj).GetHashCode() == GetHashCode();
         }
 

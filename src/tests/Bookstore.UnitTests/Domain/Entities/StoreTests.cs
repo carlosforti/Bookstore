@@ -30,5 +30,24 @@ namespace Bookstore.UnitTests.Domain.Entities
             store.IsValid.Should().BeFalse();
             store.Notifications.Count.Should().Be(notificationQuantity);
         }
+
+        [Fact]
+        public void Equals_ShouldBeTrue_WhenComparingWithStore()
+        {
+            var store = new Store(0, "Test", "test@test.com");
+            var otherStore = new Store(0, "Test", "test@test.com");
+
+            store.Equals(otherStore).Should().BeTrue();
+        }
+
+        [Theory]
+        [InlineData(null)]
+        [InlineData(1)]
+        [InlineData("")]
+        public void Equals_ShouldBeFalse_WhenNotStore(object obj)
+        {
+            var store = new Store(0, "Test", "test@test.com");
+            store.Equals(obj).Should().BeFalse();
+        }
     }
 }
